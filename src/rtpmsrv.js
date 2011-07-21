@@ -1,22 +1,23 @@
-var net = require('net');
+var net = require("net");
+var RtmpConnection = require("./RtmpConnection").RtmpConnection;
  
- 
-var server = net.createServer(function (stream) {
-    stream.setEncoding('utf8');
- 
-    stream.addListener('connect', function () {
-        console.log("Connect!");
+var server = net.createServer();
+
+server.addListener("connection", function (socket) {
+		try
+		{
+			console.log("server:connection");
+			new RtmpConnection(socket);
+		}		
+		catch( error )
+		{
+			console.log("Error: "+error.message );
+		}
     });
- 
-    stream.addListener('data', function (data) {
-        console.log(data.toString('ascii'));
-    });
- 
-    stream.addListener('end', function () {
-        console.log("Disconnect!");
-        stream.end();
-    });
-});
+
+server.addListener("close", function(errno) {
+	console.log("server:close "+errno);
+} );
 
 server.listen(1935, "127.0.0.1");
 console.log("Started...");

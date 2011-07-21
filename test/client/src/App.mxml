@@ -2,17 +2,18 @@
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
                xmlns:s="library://ns.adobe.com/flex/spark" 
                xmlns:mx="library://ns.adobe.com/flex/halo"
-			   creationComplete="mainFunction()">
+			   creationComplete="main()">
 			   
         <fx:Script>
                 <![CDATA[
 						import flash.net.NetConnection;
                         import mx.controls.Alert;
 						
-                        private function mainFunction():void
+                        private function main() : void
                         {
                             var conn : NetConnection = new NetConnection();
 							conn.connect("rtmp://127.0.0.1");
+							conn.call("test", null);
                         }
                 ]]>
         </fx:Script>
