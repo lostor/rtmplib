@@ -1,5 +1,6 @@
 var net = require('net');
  
+ 
 var server = net.createServer(function (stream) {
     stream.setEncoding('utf8');
  
@@ -18,3 +19,4 @@ var server = net.createServer(function (stream) {
 });
 
 server.listen(1935, "127.0.0.1");
+console.log("Started...");

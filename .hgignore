@@ -1,0 +1,6 @@
+# use glob syntax
+syntax: glob
+
+*.swf
+*.orig
+glob:/test/client/bin/
