@@ -4,16 +4,16 @@ var RtmpConnection = require("./RtmpConnection").RtmpConnection;
 var server = net.createServer();
 
 server.addListener("connection", function (socket) {
-		try
-		{
-			console.log("server:connection");
-			new RtmpConnection(socket);
-		}		
-		catch( error )
-		{
-			console.log("Error: "+error.message );
-		}
-    });
+	try
+	{
+		console.log("server:connection");
+		new RtmpConnection(socket);
+	}		
+	catch( error )
+	{
+		console.log("Error: "+error.message );
+	}
+});
 
 server.addListener("close", function(errno) {
 	console.log("server:close "+errno);
